@@ -32,7 +32,13 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('user.index');
 })->name('dashboard');
-
+//user
 Route::get('/user/logout', [MainUserController::class, 'Logout'])->name('user.logout');
+
+Route::get('/user/profile', [MainUserController::class, 'UserProfile'])->name('user.profile');
+
+Route::get('/user/profile/edit', [MainUserController::class, 'UserProfileEdit'])->name('profile.edit');
+
+Route::post('/user/profile/store', [MainUserController::class, 'UserProfileStore'])->name('profile.store');
 
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
